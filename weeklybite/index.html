@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weeklybite — AI-Powered Weekly Meal Planning</title>
+    <style>
+        :root {
+            --green: #4A7C59;
+            --green-dark: #3A6349;
+            --green-light: #e8f2ec;
+            --green-bg: #f5faf7;
+            --text: #1a1a1a;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --white: #ffffff;
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--green); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--green);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--green-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(74,124,89,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--green);
+            border: 2px solid var(--green);
+        }
+
+        .btn-outline:hover {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 17px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 24px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--white) 0%, var(--green-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74,124,89,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 68px);
+            font-weight: 800;
+            line-height: 1.1;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span { color: var(--green); }
+
+        .hero p {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .app-store-badge {
+            height: 54px;
+            transition: transform 0.2s;
+        }
+
+        .app-store-badge:hover { transform: scale(1.05); }
+
+        .hero-phones {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .phone-frame {
+            width: 260px;
+            border-radius: 32px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+            overflow: hidden;
+            background: white;
+            flex-shrink: 0;
+        }
+
+        .phone-frame img {
+            width: 100%;
+            display: block;
+        }
+
+        .phone-frame.center {
+            width: 280px;
+            z-index: 2;
+            transform: translateY(-20px);
+        }
+
+        .phone-frame.side {
+            opacity: 0.7;
+            transform: scale(0.9);
+        }
+
+        /* Section */
+        section {
+            padding: 100px 24px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--green);
+            background: var(--green-light);
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.6;
+        }
+
+        .section-center {
+            text-align: center;
+        }
+
+        .section-center .section-subtitle {
+            margin: 0 auto 60px;
+        }
+
+        /* Features */
+        .features { background: var(--white); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--green-bg);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(74,124,89,0.1);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--green);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works { background: var(--green-bg); }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 44px;
+            height: 44px;
+            background: var(--green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            margin: 0 auto 20px;
+        }
+
+        .step-phone {
+            width: 200px;
+            border-radius: 24px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 240px;
+            margin: 0 auto;
+        }
+
+        /* Showcase */
+        .showcase {
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .showcase-row {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            max-width: 1100px;
+            margin: 0 auto 80px;
+        }
+
+        .showcase-row:last-child { margin-bottom: 0; }
+
+        .showcase-row.reverse { flex-direction: row-reverse; }
+
+        .showcase-text { flex: 1; }
+
+        .showcase-text h3 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .showcase-text p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .showcase-text ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .showcase-text ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .showcase-text ul li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .showcase-phone {
+            flex-shrink: 0;
+        }
+
+        .showcase-phone img {
+            width: 280px;
+            border-radius: 32px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+        }
+
+        /* Pricing */
+        .pricing { background: var(--green-bg); }
+
+        .pricing-cards {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px 36px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transition: transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--green);
+            box-shadow: 0 8px 32px rgba(74,124,89,0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green);
+            color: white;
+            padding: 4px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--green);
+            margin: 16px 0 4px;
+        }
+
+        .pricing-price span {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .pricing-detail {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* CTA */
+        .cta {
+            background: var(--green);
+            text-align: center;
+            padding: 100px 24px;
+        }
+
+        .cta h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,0.8);
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--green);
+        }
+
+        .cta .btn:hover {
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.6);
+            padding: 60px 24px 40px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-brand .logo { color: white; margin-bottom: 12px; }
+        .footer-brand .logo-icon { background: var(--green); }
+
+        .footer-brand p {
+            font-size: 14px;
+            max-width: 280px;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+
+            .hero-phones { gap: 12px; }
+            .phone-frame { width: 160px; }
+            .phone-frame.center { width: 180px; }
+
+            .showcase-row,
+            .showcase-row.reverse {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .showcase-phone img { width: 220px; }
+            .showcase-text ul { align-items: center; }
+
+            .steps { gap: 24px; }
+            .step-phone { width: 160px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-phones .side { display: none; }
+            .phone-frame.center { width: 240px; }
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1, .hero p, .hero-buttons, .hero-phones {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero p { animation-delay: 0.1s; }
+        .hero-buttons { animation-delay: 0.2s; }
+        .hero-phones { animation-delay: 0.35s; }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon">W</div>
+            Weeklybite
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#download" class="btn">Download</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>Eat better, <span>every week.</span></h1>
+    <p>AI-powered meal planning that fits your diet, your budget, and your life. Personalized recipes and grocery lists in seconds.</p>
+    <div class="hero-buttons">
+        <a href="#download" class="btn btn-large">Download for iOS</a>
+        <a href="#features" class="btn btn-large btn-outline">See Features</a>
+    </div>
+    <div class="hero-phones">
+        <div class="phone-frame side">
+            <img src="images/grocery-list.png" alt="Grocery list organized by category">
+        </div>
+        <div class="phone-frame center">
+            <img src="images/meal-plan.png" alt="Weekly meal plan with breakfast, lunch and dinner">
+        </div>
+        <div class="phone-frame side">
+            <img src="images/settings.png" alt="Personalized dietary preferences">
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features section-center" id="features">
+    <span class="section-label">Features</span>
+    <h2 class="section-title">Everything you need to plan<br>your meals effortlessly</h2>
+    <p class="section-subtitle">Weeklybite combines AI intelligence with your personal preferences to create meal plans you'll actually enjoy cooking.</p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">&#10024;</div>
+            <h3>AI Meal Planning</h3>
+            <p>Get a complete 7-day meal plan with breakfast, lunch, and dinner tailored to your dietary style, allergies, and favorite cuisines.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128722;</div>
+            <h3>Smart Grocery Lists</h3>
+            <p>Automatically generated and organized by category. Ingredients are consolidated and quantities calculated for your household size.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#127860;</div>
+            <h3>Detailed Recipes</h3>
+            <p>Every meal comes with step-by-step instructions including cooking temperatures, times, and visual cues. No guesswork needed.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128170;</div>
+            <h3>Macro Tracking</h3>
+            <p>Set your protein, carbs, and fat ratios. Each recipe shows complete nutritional info so you stay on track with your goals.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128118;</div>
+            <h3>Kid-Friendly Mode</h3>
+            <p>Toggle kid-friendly meals for familiar flavors, milder spice levels, and presentations that children will actually enjoy eating.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#127757;</div>
+            <h3>6 Languages</h3>
+            <p>Available in English, Spanish, French, German, Dutch, and Portuguese. Recipes and grocery lists appear in your device language.</p>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works section-center" id="how-it-works">
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">Personalized in minutes,<br>planned for the week</h2>
+    <p class="section-subtitle">Tell us about your preferences and we'll handle the rest. A complete week of meals, ready to cook.</p>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <img src="images/onboarding-diet.png" alt="Choose dietary style" class="step-phone">
+            <h3>Set Your Diet</h3>
+            <p>Omnivore, vegetarian, vegan, keto, or paleo — you choose.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <img src="images/onboarding-allergies.png" alt="Select allergies" class="step-phone">
+            <h3>Mark Allergies</h3>
+            <p>We'll make sure every ingredient is safe for you and your family.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <img src="images/onboarding-cuisine.png" alt="Pick cuisines" class="step-phone">
+            <h3>Pick Cuisines</h3>
+            <p>Italian, Asian, Mexican, Mediterranean — mix and match your favorites.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <img src="images/meal-plan.png" alt="Your meal plan" class="step-phone">
+            <h3>Get Your Plan</h3>
+            <p>A full week of meals and a grocery list, generated instantly by AI.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Showcase -->
+<section class="showcase" id="showcase">
+    <div class="showcase-row">
+        <div class="showcase-text">
+            <span class="section-label">Meal Plans</span>
+            <h3>Your entire week,<br>planned and ready</h3>
+            <p>Browse meals day by day with a clean, intuitive interface. Each meal shows prep time, calories, and macros at a glance. Don't love a meal? Swap it instantly for a new suggestion.</p>
+            <ul>
+                <li>21 meals per week (breakfast, lunch, dinner)</li>
+                <li>Swap any meal with one tap</li>
+                <li>Full nutritional breakdown</li>
+                <li>Step-by-step cooking instructions</li>
+            </ul>
+        </div>
+        <div class="showcase-phone">
+            <img src="images/meal-plan.png" alt="Weekly meal plan view">
+        </div>
+    </div>
+
+    <div class="showcase-row reverse">
+        <div class="showcase-text">
+            <span class="section-label">Grocery Lists</span>
+            <h3>Shop smarter,<br>waste less</h3>
+            <p>Your grocery list is automatically generated from your meal plan, with ingredients consolidated and organized by store section. Check items off as you shop, and share the list with your family.</p>
+            <ul>
+                <li>Sorted by category (Produce, Dairy, Meat...)</li>
+                <li>Precise quantities in metric or imperial</li>
+                <li>Check off items as you shop</li>
+                <li>Share with family via any app</li>
+            </ul>
+        </div>
+        <div class="showcase-phone">
+            <img src="images/grocery-list.png" alt="Categorized grocery list">
+        </div>
+    </div>
+
+    <div class="showcase-row">
+        <div class="showcase-text">
+            <span class="section-label">Personalization</span>
+            <h3>Fine-tuned to<br>your lifestyle</h3>
+            <p>From macro ratios to budget preferences, every aspect of your meal plan reflects your choices. Adjust anything anytime from Settings, and your next plan will adapt automatically.</p>
+            <ul>
+                <li>Custom macronutrient balance</li>
+                <li>Budget-friendly to premium options</li>
+                <li>Quick &amp; Easy to Gourmet complexity</li>
+                <li>Plans for up to 6 people</li>
+            </ul>
+        </div>
+        <div class="showcase-phone">
+            <img src="images/onboarding-macros.png" alt="Macronutrient balance customization">
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing section-center" id="pricing">
+    <span class="section-label">Pricing</span>
+    <h2 class="section-title">Start with a free trial</h2>
+    <p class="section-subtitle">Try Weeklybite Premium free for 7 days. Cancel anytime.</p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <h3>Monthly</h3>
+            <div class="pricing-price">$5.99<span>/mo</span></div>
+            <p class="pricing-detail">Billed monthly</p>
+            <ul class="pricing-features">
+                <li>Unlimited AI meal plans</li>
+                <li>Instant meal swaps</li>
+                <li>Auto-generated grocery lists</li>
+                <li>Plans for up to 6 people</li>
+                <li>All 6 languages</li>
+            </ul>
+            <a href="#download" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+        </div>
+        <div class="pricing-card featured">
+            <div class="pricing-badge">Save 52%</div>
+            <h3>Yearly</h3>
+            <div class="pricing-price">$34.99<span>/yr</span></div>
+            <p class="pricing-detail">Just $2.92/month</p>
+            <ul class="pricing-features">
+                <li>Everything in Monthly</li>
+                <li>7-day free trial</li>
+                <li>Best value</li>
+                <li>Priority support</li>
+                <li>Early access to new features</li>
+            </ul>
+            <a href="#download" class="btn btn-large" style="width:100%;justify-content:center;">Start Free Trial</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="download">
+    <h2>Your best week of meals<br>starts now.</h2>
+    <p>Download Weeklybite and get your first AI-generated meal plan in under 3 minutes.</p>
+    <a href="#" class="btn btn-large">Download on the App Store</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="#" class="logo">
+                <div class="logo-icon">W</div>
+                Weeklybite
+            </a>
+            <p>AI-powered weekly meal planning for busy people who want to eat well.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Product</h4>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer-links">
+            <h4>Legal</h4>
+            <a href="https://weeklybite.app/terms">Terms of Use</a>
+            <a href="https://weeklybite.app/privacy">Privacy Policy</a>
+        </div>
+        <div class="footer-links">
+            <h4>Support</h4>
+            <a href="mailto:support@weeklybite.app">Contact Us</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Weeklybite. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
