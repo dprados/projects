@@ -132,7 +132,6 @@ window.LECTU_I18N = {
     "cta.h": "Tu próxima gran lectura<br>empieza aquí.",
     "cta.p": "Descarga Lectu y dale a tu vida lectora la app que se merece.",
     "cta.appSmall": "Descárgala en el",
-    "cta.mini": "Gratis para empezar. Pro por un pago único. Sin anuncios, nunca.",
 
     "footer.features": "Funciones",
     "footer.pricing": "Precio",
@@ -291,7 +290,6 @@ window.LECTU_I18N = {
     "cta.h": "Your next great read<br>starts here.",
     "cta.p": "Download Lectu and give your reading life the app it deserves.",
     "cta.appSmall": "Download on the",
-    "cta.mini": "Free to start. Pro is a one-time purchase. No ads, ever.",
 
     "footer.features": "Features",
     "footer.pricing": "Pricing",
