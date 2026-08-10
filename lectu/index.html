@@ -167,6 +167,7 @@
       <ul class="ticks">
         <li data-i18n="f2.t1">Progreso por página, porcentaje o minutos</li>
         <li data-i18n="f2.t2">Sesiones, valoración, reseña y citas</li>
+        <li data-i18n-html="f2.t4"><strong>Préstamos</strong>: marca un libro prestado con su fecha de devolución y recibe un recordatorio</li>
         <li data-i18n="f2.t3">Widget: tu lectura, en la pantalla de inicio</li>
       </ul>
     </div>
@@ -201,15 +202,16 @@
     <div class="feature__text reveal">
       <span class="kicker" data-i18n="f4.kicker">Tus números, con sentido</span>
       <h2 data-i18n="f4.h">Un reto anual que sí motiva</h2>
-      <p data-i18n="f4.p">Ponte una meta y mira tu avance en un anillo elegante que te dice, sin agobios, si vas a llegar. Libros del año, páginas, valoración media y tu lectura más larga, siempre a mano.</p>
+      <p data-i18n="f4.p">Ponte una meta y mira tu avance en un anillo elegante que te dice, sin agobios, si vas a llegar. Y más allá del reto: el mapa de tu año en franjas de color, tu ritmo de lectura y los totales de siempre —libros, páginas y valoración media—.</p>
       <ul class="ticks">
         <li data-i18n="f4.t1">Reto anual con estimación de ritmo</li>
-        <li data-i18n="f4.t2">Totales del año: libros, páginas, valoración media</li>
-        <li data-i18n="f4.t3">Datos claros, nunca un panel abrumador</li>
+        <li data-i18n-html="f4.t2"><strong>El mapa de tu año</strong>: cada libro, una franja de color en tu calendario lector</li>
+        <li data-i18n-html="f4.t3"><strong>Tu ritmo</strong>: duración media y tus lecturas más rápida y más lenta</li>
       </ul>
     </div>
     <div class="feature__media reveal">
       <div class="phone"><img src="assets/stats.png" data-i18n-alt="alt.stats" alt="Pantalla de estadísticas con el reto anual" loading="lazy" /></div>
+      <div class="phone phone--peek"><img src="assets/stats2.png" data-i18n-alt="alt.stats2" alt="Tu ritmo de lectura y el mapa de tu año en franjas de color" loading="lazy" /></div>
     </div>
   </section>
 
@@ -249,13 +251,13 @@
     <div class="import-band__glow" aria-hidden="true"></div>
     <div class="feature feature--rev import-band__inner">
       <div class="feature__text reveal">
-        <span class="kicker" data-i18n="f6.kicker">Cambiar de app no duele</span>
-        <h2 data-i18n="f6.h">¿Vienes de Goodreads? Tu biblioteca te espera, intacta.</h2>
-        <p data-i18n="f6.p">Trae tu biblioteca de Goodreads o StoryGraph con un CSV y Lectu recupera las portadas por ti. Tú tienes el control: exporta cuando quieras y guarda una copia de seguridad completa. Sin quedar atrapado.</p>
+        <span class="kicker" data-i18n="f6.kicker">Entra fácil, respalda tranquilo</span>
+        <h2 data-i18n="f6.h">Impórtala en minutos. Respáldala entera.</h2>
+        <p data-i18n="f6.p">Trae tu biblioteca de Goodreads o StoryGraph con un CSV y Lectu recupera las portadas por ti. Y cuando ya es tuya, guárdala a salvo: una copia de seguridad completa que incluye hasta las portadas que añadiste desde tu carrete, para restaurar todo tal cual en un móvil nuevo.</p>
         <ul class="ticks">
-          <li data-i18n="f6.t1">Importa en minutos</li>
-          <li data-i18n="f6.t2">Recuperamos las portadas por ti</li>
-          <li data-i18n="f6.t3">Y puedes volver a exportar cuando quieras — sin lock-in</li>
+          <li data-i18n="f6.t1">Importa desde Goodreads o StoryGraph en minutos</li>
+          <li data-i18n-html="f6.t2"><strong>Copia de seguridad completa</strong>: tus datos y tus portadas, en un archivo</li>
+          <li data-i18n="f6.t3">O una copia ligera solo con los datos — y exporta cuando quieras, sin lock-in</li>
         </ul>
       </div>
       <div class="feature__media reveal">
@@ -278,7 +280,9 @@
       <div class="gallery__item" role="listitem"><img src="assets/search.png" alt="Buscar" loading="lazy" /></div>
       <div class="gallery__item" role="listitem"><img src="assets/results.png" alt="Resultados" loading="lazy" /></div>
       <div class="gallery__item" role="listitem"><img src="assets/stats.png" alt="Estadísticas" loading="lazy" /></div>
-      <div class="gallery__item" role="listitem"><img src="assets/wrapped.png" alt="Resumen" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/stats2.png" alt="Ritmo y mapa del año" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/wrapped.png" alt="Resumen mensual" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/year.png" alt="Resumen anual" loading="lazy" /></div>
       <div class="gallery__item" role="listitem"><img src="assets/quiz.png" alt="Quiz" loading="lazy" /></div>
     </div>
     <p class="gallery__hint" data-i18n="gallery.hint">Desliza →</p>
@@ -313,7 +317,7 @@
         <ul class="ticks ticks--plan">
           <li data-i18n="plan.free.t1">Biblioteca y progreso ilimitados</li>
           <li data-i18n="plan.free.t2">Búsqueda, escáner y alta manual</li>
-          <li data-i18n="plan.free.t3">Importa y exporta sin límites</li>
+          <li data-i18n="plan.free.t3">Importa, exporta y copia de seguridad completa</li>
         </ul>
         <a href="#descargar" class="btn btn--ghost btn--block" data-i18n="plan.free.btn">Descargar gratis</a>
       </article>
@@ -359,6 +363,10 @@
       <details>
         <summary data-i18n="faq.q4">¿Funciona sin conexión?</summary>
         <p data-i18n="faq.a4">Sí. Toda tu biblioteca, progreso, sesiones, citas y estadísticas funcionan sin red. Solo la búsqueda de libros nuevos necesita internet.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q7">¿Puedo hacer una copia de seguridad de todo?</summary>
+        <p data-i18n="faq.a7">Sí. La copia de seguridad completa guarda tus libros, progreso, sesiones, citas, estanterías y hasta las portadas que añadiste desde tu carrete, en un solo archivo. Restáurala en un móvil nuevo y todo vuelve tal cual. ¿Prefieres algo ligero? Exporta solo los datos. Y siempre es gratis.</p>
       </details>
       <details>
         <summary data-i18n="faq.q5">¿Qué incluye la versión gratuita?</summary>

@@ -22,7 +22,8 @@ window.LECTU_I18N = {
 
     "marquee": [
       "Sin anuncios", "Sin ruido", "Tus datos son tuyos",
-      "Pago único, sin suscripciones", "Portadas de verdad", "Hecha por y para lectores"
+      "Pago único, sin suscripciones", "Portadas de verdad", "Hecha por y para lectores",
+      "Copia de seguridad completa", "Recordatorios de préstamos"
     ],
 
     "manifesto.kicker": "Otra forma de llevar tus lecturas",
@@ -48,6 +49,7 @@ window.LECTU_I18N = {
     "f2.p": "Marca páginas, minutos de audiolibro o porcentaje. Puntúa, escribe tu reseña, guarda tus citas favoritas. Lectu recuerda cada sesión y hasta te dice a qué ritmo lo terminarás.",
     "f2.t1": "Progreso por página, porcentaje o minutos",
     "f2.t2": "Sesiones, valoración, reseña y citas",
+    "f2.t4": "<strong>Préstamos</strong>: marca un libro prestado con su fecha de devolución y recibe un recordatorio",
     "f2.t3": "Widget: tu lectura, en la pantalla de inicio",
 
     "f3.kicker": "Añade en segundos",
@@ -59,10 +61,10 @@ window.LECTU_I18N = {
 
     "f4.kicker": "Tus números, con sentido",
     "f4.h": "Un reto anual que sí motiva",
-    "f4.p": "Ponte una meta y mira tu avance en un anillo elegante que te dice, sin agobios, si vas a llegar. Libros del año, páginas, valoración media y tu lectura más larga, siempre a mano.",
+    "f4.p": "Ponte una meta y mira tu avance en un anillo elegante que te dice, sin agobios, si vas a llegar. Y más allá del reto: el mapa de tu año en franjas de color, tu ritmo de lectura y los totales de siempre —libros, páginas y valoración media—.",
     "f4.t1": "Reto anual con estimación de ritmo",
-    "f4.t2": "Totales del año: libros, páginas, valoración media",
-    "f4.t3": "Datos claros, nunca un panel abrumador",
+    "f4.t2": "<strong>El mapa de tu año</strong>: cada libro, una franja de color en tu calendario lector",
+    "f4.t3": "<strong>Tu ritmo</strong>: duración media y tus lecturas más rápida y más lenta",
 
     "spot.kicker": "Nuevo",
     "spot.h": "Tu año lector,<br>hecho para compartir",
@@ -76,12 +78,12 @@ window.LECTU_I18N = {
     "f5.t2": "Portadas, sinopsis, citas y duelos de páginas",
     "f5.t3": "100% offline, 100% tuyo",
 
-    "f6.kicker": "Cambiar de app no duele",
-    "f6.h": "¿Vienes de Goodreads? Tu biblioteca te espera, intacta.",
-    "f6.p": "Trae tu biblioteca de Goodreads o StoryGraph con un CSV y Lectu recupera las portadas por ti. Tú tienes el control: exporta cuando quieras y guarda una copia de seguridad completa. Sin quedar atrapado.",
-    "f6.t1": "Importa en minutos",
-    "f6.t2": "Recuperamos las portadas por ti",
-    "f6.t3": "Y puedes volver a exportar cuando quieras — sin lock-in",
+    "f6.kicker": "Entra fácil, respalda tranquilo",
+    "f6.h": "Impórtala en minutos. Respáldala entera.",
+    "f6.p": "Trae tu biblioteca de Goodreads o StoryGraph con un CSV y Lectu recupera las portadas por ti. Y cuando ya es tuya, guárdala a salvo: una copia de seguridad completa que incluye hasta las portadas que añadiste desde tu carrete, para restaurar todo tal cual en un móvil nuevo.",
+    "f6.t1": "Importa desde Goodreads o StoryGraph en minutos",
+    "f6.t2": "<strong>Copia de seguridad completa</strong>: tus datos y tus portadas, en un archivo",
+    "f6.t3": "O una copia ligera solo con los datos — y exporta cuando quieras, sin lock-in",
 
     "gallery.kicker": "Un vistazo",
     "gallery.h": "Bonita en cada pantalla",
@@ -101,7 +103,7 @@ window.LECTU_I18N = {
     "plan.free.tag": "Todo lo básico para empezar a leer mejor.",
     "plan.free.t1": "Biblioteca y progreso ilimitados",
     "plan.free.t2": "Búsqueda, escáner y alta manual",
-    "plan.free.t3": "Importa y exporta sin límites",
+    "plan.free.t3": "Importa, exporta y copia de seguridad completa",
     "plan.free.btn": "Descargar gratis",
     "plan.pro.badge": "Pro · pago único",
     "plan.pro.h": "Lectu Pro",
@@ -128,6 +130,8 @@ window.LECTU_I18N = {
     "faq.a5": "Muchísimo: biblioteca ilimitada, seguimiento de progreso, búsqueda, escáner, reto anual, estadísticas, importación y exportación. Pro añade widgets, sesiones cronometradas, resúmenes para compartir y más.",
     "faq.q6": "¿Lectu Pro es una suscripción?",
     "faq.a6": "No. Pro es un <strong>pago único de 14,99 €</strong> (o el equivalente en tu moneda): lo compras una sola vez y es tuyo para siempre, con todas las mejoras futuras incluidas. Sin suscripciones, sin cuotas anuales, sin renovaciones.",
+    "faq.q7": "¿Puedo hacer una copia de seguridad de todo?",
+    "faq.a7": "Sí. La copia de seguridad completa guarda tus libros, progreso, sesiones, citas, estanterías y hasta las portadas que añadiste desde tu carrete, en un solo archivo. Restáurala en un móvil nuevo y todo vuelve tal cual. ¿Prefieres algo ligero? Exporta solo los datos. Y siempre es gratis.",
 
     "cta.h": "Tu próxima gran lectura<br>empieza aquí.",
     "cta.p": "Descarga Lectu y dale a tu vida lectora la app que se merece.",
@@ -155,6 +159,7 @@ window.LECTU_I18N = {
     "alt.search": "Pantalla de búsqueda con exploración por género",
     "alt.results": "Resultados de búsqueda con varias ediciones",
     "alt.stats": "Pantalla de estadísticas con el reto anual",
+    "alt.stats2": "Tu ritmo de lectura y el mapa de tu año en franjas de color",
     "alt.wrapped": "Tarjeta 'Mi marzo lector' con portadas y libro favorito",
     "alt.quiz": "Quiz ¿Qué libro es? con una portada difuminada",
     "alt.importexport": "Pantalla de importar y exportar"
@@ -180,7 +185,8 @@ window.LECTU_I18N = {
 
     "marquee": [
       "No ads", "No noise", "Your data is yours",
-      "One-time purchase, no subscriptions", "Real covers", "Made by and for readers"
+      "One-time purchase, no subscriptions", "Real covers", "Made by and for readers",
+      "Full backups", "Loan reminders"
     ],
 
     "manifesto.kicker": "A different way to keep your reading",
@@ -206,6 +212,7 @@ window.LECTU_I18N = {
     "f2.p": "Log pages, audiobook minutes or percentage. Rate it, write your review, save your favorite quotes. Lectu remembers every session — and even tells you the pace to finish it.",
     "f2.t1": "Progress by page, percentage or minutes",
     "f2.t2": "Sessions, rating, review and quotes",
+    "f2.t4": "<strong>Loans</strong>: mark a lent book with its due date and get a reminder",
     "f2.t3": "Widget: your reading, right on your Home Screen",
 
     "f3.kicker": "Add in seconds",
@@ -217,10 +224,10 @@ window.LECTU_I18N = {
 
     "f4.kicker": "Your numbers, with meaning",
     "f4.h": "A yearly challenge that actually motivates",
-    "f4.p": "Set a goal and watch your progress in an elegant ring that tells you, without the pressure, whether you'll make it. Books this year, pages, average rating and your longest read, always on hand.",
+    "f4.p": "Set a goal and watch your progress in an elegant ring that tells you, without the pressure, whether you'll make it. And beyond the challenge: the map of your year in colour bands, your reading pace, and the totals you'd expect — books, pages and average rating.",
     "f4.t1": "Yearly challenge with pace estimate",
-    "f4.t2": "Year totals: books, pages, average rating",
-    "f4.t3": "Clear data, never an overwhelming dashboard",
+    "f4.t2": "<strong>The map of your year</strong>: each book, a coloured band on your reading calendar",
+    "f4.t3": "<strong>Your pace</strong>: average duration and your fastest and slowest reads",
 
     "spot.kicker": "New",
     "spot.h": "Your reading year,<br>made to share",
@@ -234,12 +241,12 @@ window.LECTU_I18N = {
     "f5.t2": "Covers, synopses, quotes and page duels",
     "f5.t3": "100% offline, 100% yours",
 
-    "f6.kicker": "Switching apps shouldn't hurt",
-    "f6.h": "Coming from Goodreads? Your library is waiting, intact.",
-    "f6.p": "Bring your library from Goodreads or StoryGraph with a CSV and Lectu recovers the covers for you. You stay in control: export whenever you want and keep a full backup. Never locked in.",
-    "f6.t1": "Import in minutes",
-    "f6.t2": "We recover your covers for you",
-    "f6.t3": "And you can export again whenever you want — no lock-in",
+    "f6.kicker": "Easy in, safe backups",
+    "f6.h": "Import it in minutes. Back it up whole.",
+    "f6.p": "Bring your library from Goodreads or StoryGraph with a CSV and Lectu recovers the covers for you. And once it's yours, keep it safe: a full backup that even includes the covers you added from your camera roll, so everything comes back exactly as it was on a new phone.",
+    "f6.t1": "Import from Goodreads or StoryGraph in minutes",
+    "f6.t2": "<strong>Full backup</strong>: your data and your covers, in one file",
+    "f6.t3": "Or a lightweight data-only copy — and export whenever you want, no lock-in",
 
     "gallery.kicker": "A glimpse",
     "gallery.h": "Beautiful on every screen",
@@ -259,7 +266,7 @@ window.LECTU_I18N = {
     "plan.free.tag": "All the basics to start reading better.",
     "plan.free.t1": "Unlimited library and progress",
     "plan.free.t2": "Search, scanner and manual add",
-    "plan.free.t3": "Import and export, no limits",
+    "plan.free.t3": "Import, export and full backup",
     "plan.free.btn": "Download free",
     "plan.pro.badge": "Pro · one-time",
     "plan.pro.h": "Lectu Pro",
@@ -286,6 +293,8 @@ window.LECTU_I18N = {
     "faq.a5": "A lot: unlimited library, progress tracking, search, scanner, yearly challenge, statistics, import and export. Pro adds widgets, timed sessions, shareable recaps and more.",
     "faq.q6": "Is Lectu Pro a subscription?",
     "faq.a6": "No. Pro is a <strong>one-time purchase of $14.99</strong> (or the equivalent in your currency): buy it once and it's yours forever, with all future improvements included. No subscriptions, no yearly fees, no renewals.",
+    "faq.q7": "Can I back up everything?",
+    "faq.a7": "Yes. The full backup saves your books, progress, sessions, quotes, shelves and even the covers you added from your camera roll, in a single file. Restore it on a new phone and everything comes back exactly as it was. Prefer something light? Export data only. And it's always free.",
 
     "cta.h": "Your next great read<br>starts here.",
     "cta.p": "Download Lectu and give your reading life the app it deserves.",
@@ -313,6 +322,7 @@ window.LECTU_I18N = {
     "alt.search": "Search screen with genre browsing",
     "alt.results": "Search results with several editions",
     "alt.stats": "Statistics screen with the yearly challenge",
+    "alt.stats2": "Your reading pace and the map of your year in colour bands",
     "alt.wrapped": "'My reading March' card with covers and favorite book",
     "alt.quiz": "Which book is it? quiz with a blurred cover",
     "alt.importexport": "Import and export screen"
