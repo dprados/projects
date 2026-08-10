@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lectu — Tu vida lectora, con alma</title>
+  <meta name="description" data-i18n="meta.description" content="Lectu es el diario de lectura para iOS que trata tus libros como objetos, no como filas de una hoja de cálculo. Sin anuncios, sin feed social, sin ruido. Privada y local-first." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lectu — Tu vida lectora, con alma" />
+  <meta property="og:description" content="El diario de lectura bonito, privado y sin ruido para iOS. Sigue tu progreso, descubre libros, comparte tu año lector." />
+  <meta property="og:image" content="assets/wrapped.png" />
+  <meta name="theme-color" content="#17131F" />
+
+  <link rel="icon" href="assets/icon.png" />
+  <link rel="apple-touch-icon" href="assets/icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Literata:ital,opsz,wght@0,7..72,400;1,7..72,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════ NAV ══════════════════ -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="Lectu — inicio">
+      <img src="assets/logo-L.png" alt="" class="nav__glyph" />
+      <span class="nav__word">Lectu</span>
+    </a>
+    <nav class="nav__links" aria-label="Secciones">
+      <a href="#biblioteca" data-i18n="nav.library">Biblioteca</a>
+      <a href="#seguimiento" data-i18n="nav.tracking">Seguimiento</a>
+      <a href="#descubre" data-i18n="nav.discover">Descubre</a>
+      <a href="#resumen" data-i18n="nav.year">Tu año lector</a>
+      <a href="#privacidad" data-i18n="nav.privacy">Privacidad</a>
+      <a href="#precio" data-i18n="nav.pricing">Precio</a>
+    </nav>
+    <div class="nav__end">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang__btn" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#descargar" class="btn btn--pill nav__cta" data-i18n="nav.cta">Descárgala</a>
+    </div>
+    <button class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <main id="top">
+  <section class="hero">
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <div class="hero__copy reveal">
+      <span class="eyebrow" data-i18n="hero.eyebrow">Diario de lectura · iPhone · iPad</span>
+      <h1 data-i18n-html="hero.h1">Tu vida lectora,<br><em>con alma.</em></h1>
+      <p class="hero__sub" data-i18n="hero.sub">
+        Lectu trata tus libros como lo que son —objetos preciosos, no filas de una hoja de
+        cálculo—. Sigue tu progreso, redescubre tu estantería y comparte tu año lector.
+        Sin anuncios. Sin feed. Sin ruido.
+      </p>
+      <div class="hero__actions">
+        <a href="#descargar" class="btn btn--app">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn__apple"><path fill="currentColor" d="M16.36 12.9c.02 2.36 2.07 3.14 2.1 3.16-.02.06-.33 1.12-1.08 2.22-.65.95-1.32 1.9-2.38 1.92-1.04.02-1.37-.61-2.56-.61-1.19 0-1.56.59-2.54.63-1.02.04-1.8-1.03-2.46-1.98-1.34-1.94-2.37-5.48-.99-7.87.68-1.19 1.9-1.94 3.22-1.96 1-.02 1.95.68 2.56.68.61 0 1.76-.84 2.97-.72.5.02 1.93.2 2.84 1.53-.07.05-1.7 1-1.68 2.97M14.4 6.9c.54-.66.9-1.57.8-2.48-.78.03-1.72.52-2.28 1.18-.5.58-.94 1.51-.82 2.4.87.07 1.76-.44 2.3-1.1"/></svg>
+          <span><small data-i18n="cta.appSmall">Descárgala en el</small><strong>App Store</strong></span>
+        </a>
+        <a href="#tour" class="btn btn--ghost" data-i18n="hero.features">Ver funciones ↓</a>
+      </div>
+      <p class="hero__trust" data-i18n="hero.trust">Privada de nacimiento · Sincroniza con tu iCloud · Funciona sin conexión</p>
+    </div>
+
+    <div class="hero__stage reveal" aria-hidden="false">
+      <div class="phone phone--back">
+        <img src="assets/home.png" data-i18n-alt="alt.home" alt="Pantalla de Inicio de Lectu con las secciones Leyendo y Pendientes" loading="eager" />
+      </div>
+      <div class="phone phone--front">
+        <img src="assets/library.png" data-i18n-alt="alt.library" alt="La biblioteca de Lectu: una rejilla de portadas con su progreso" loading="eager" />
+      </div>
+      <div class="phone phone--side">
+        <img src="assets/wrapped.png" data-i18n-alt="alt.wrappedHero" alt="Resumen mensual de lectura para compartir" loading="eager" />
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ══════════════════ DIFERENCIAL ══════════════════ -->
+  <section class="marquee" aria-label="Lo que nos hace distintos">
+    <div class="marquee__track" id="marqueeTrack"></div>
+  </section>
+
+  <!-- ══════════════════ MANIFIESTO / POR QUÉ ══════════════════ -->
+  <section class="manifesto" id="tour">
+    <div class="section-head reveal">
+      <span class="kicker" data-i18n="manifesto.kicker">Otra forma de llevar tus lecturas</span>
+      <h2 data-i18n-html="manifesto.h2">Las apps de lectura se convirtieron en redes sociales.<br><span class="muted">Lectu volvió al libro.</span></h2>
+    </div>
+    <div class="pillars">
+      <article class="pillar reveal">
+        <div class="pillar__icon">◇</div>
+        <h3 data-i18n="pillar.beautiful.h">Bonita de verdad</h3>
+        <p data-i18n="pillar.beautiful.p">Tipografía de editorial, portadas cuidadas y una cinta de papel plegado que marca tu progreso. Da gusto abrirla.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon">🔒</div>
+        <h3 data-i18n="pillar.private.h">Privada y tuya</h3>
+        <p data-i18n="pillar.private.p">Nada de perfiles públicos ni rastreadores. Tus lecturas viven en tu dispositivo y se sincronizan por tu iCloud.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon">✧</div>
+        <h3 data-i18n="pillar.details.h">Con detalles que sorprenden</h3>
+        <p data-i18n="pillar.details.p">Un resumen mensual para compartir, un quiz sobre tu propia colección, tu estantería en 3D. Cosas que no verás en otras apps.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon">↯</div>
+        <h3 data-i18n="pillar.nofees.h">Sin trucos ni cuotas</h3>
+        <p data-i18n-html="pillar.nofees.p">Empieza gratis. Y si te enamoras, Pro es un <strong>pago único</strong>: lo compras una vez y es tuyo para siempre. Sin suscripciones, sin sorpresas.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FEATURE 1 · BIBLIOTECA ══════════════════ -->
+  <section class="feature" id="biblioteca">
+    <div class="feature__text reveal">
+      <span class="kicker" data-i18n="f1.kicker">Tu estantería</span>
+      <h2 data-i18n="f1.h">Una biblioteca, no una hoja de cálculo</h2>
+      <p data-i18n="f1.p">Tus libros como se merecen: portadas grandes, su estado de un vistazo y una cinta que muestra por dónde vas. Filtra por leyendo, pendientes o leídos, y ordénalos a tu gusto.</p>
+      <ul class="ticks">
+        <li data-i18n="f1.t1">Rejilla o lista, con portada, autor y valoración</li>
+        <li data-i18n-html="f1.t2"><strong>Colección</strong>: recorre tu estantería en 3D, como en una librería</li>
+        <li data-i18n="f1.t3">Estanterías propias con su color y su emoji</li>
+      </ul>
+    </div>
+    <div class="feature__media reveal">
+      <div class="phone"><img src="assets/library.png" data-i18n-alt="alt.libraryGrid" alt="Biblioteca en rejilla con filtros de estado" loading="lazy" /></div>
+      <div class="phone phone--peek"><img src="assets/coverflow.png" data-i18n-alt="alt.coverflow" alt="Vista Colección en 3D de las portadas" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FEATURE 2 · SEGUIMIENTO ══════════════════ -->
+  <section class="feature feature--rev" id="seguimiento">
+    <div class="feature__text reveal">
+      <span class="kicker" data-i18n="f2.kicker">Cada libro, su historia</span>
+      <h2 data-i18n="f2.h">Sigue tu lectura hasta el último detalle</h2>
+      <p data-i18n="f2.p">Marca páginas, minutos de audiolibro o porcentaje. Puntúa, escribe tu reseña, guarda tus citas favoritas. Lectu recuerda cada sesión y hasta te dice a qué ritmo lo terminarás.</p>
+      <ul class="ticks">
+        <li data-i18n="f2.t1">Progreso por página, porcentaje o minutos</li>
+        <li data-i18n="f2.t2">Sesiones, valoración, reseña y citas</li>
+        <li data-i18n="f2.t3">Widget y Live Activity: tu lectura, en la pantalla de inicio</li>
+      </ul>
+    </div>
+    <div class="feature__media reveal">
+      <div class="phone"><img src="assets/book.png" data-i18n-alt="alt.book" alt="Ficha de un libro con estado y progreso" loading="lazy" /></div>
+      <div class="widget-float">
+        <img src="assets/widget.jpg" data-i18n-alt="alt.widget" alt="Widget de Lectu mostrando el libro en curso y su progreso" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FEATURE 3 · DESCUBRE ══════════════════ -->
+  <section class="feature" id="descubre">
+    <div class="feature__text reveal">
+      <span class="kicker" data-i18n="f3.kicker">Añade en segundos</span>
+      <h2 data-i18n="f3.h">Encuentra cualquier libro y añádelo al vuelo</h2>
+      <p data-i18n="f3.p">Busca por título, autor o ISBN en un catálogo enorme, o escanea el código de barras con la cámara. ¿Varias ediciones? Elige la tuya. ¿No aparece? Créalo a mano en un minuto.</p>
+      <ul class="ticks">
+        <li data-i18n="f3.t1">Búsqueda combinada de Google Books y Open Library</li>
+        <li data-i18n="f3.t2">Escáner de ISBN y alta manual</li>
+        <li data-i18n-html="f3.t3"><strong>Para ti</strong>: recomendaciones a partir de lo que ya lees</li>
+      </ul>
+    </div>
+    <div class="feature__media reveal">
+      <div class="phone"><img src="assets/search.png" data-i18n-alt="alt.search" alt="Pantalla de búsqueda con exploración por género" loading="lazy" /></div>
+      <div class="phone phone--peek"><img src="assets/results.png" data-i18n-alt="alt.results" alt="Resultados de búsqueda con varias ediciones" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FEATURE 4 · ESTADÍSTICAS ══════════════════ -->
+  <section class="feature feature--rev" id="estadisticas">
+    <div class="feature__text reveal">
+      <span class="kicker" data-i18n="f4.kicker">Tus números, con sentido</span>
+      <h2 data-i18n="f4.h">Un reto anual que sí motiva</h2>
+      <p data-i18n="f4.p">Ponte una meta y mira tu avance en un anillo elegante que te dice, sin agobios, si vas a llegar. Libros del año, páginas, valoración media y tu lectura más larga, siempre a mano.</p>
+      <ul class="ticks">
+        <li data-i18n="f4.t1">Reto anual con estimación de ritmo</li>
+        <li data-i18n="f4.t2">Totales del año: libros, páginas, valoración media</li>
+        <li data-i18n="f4.t3">Datos claros, nunca un panel abrumador</li>
+      </ul>
+    </div>
+    <div class="feature__media reveal">
+      <div class="phone"><img src="assets/stats.png" data-i18n-alt="alt.stats" alt="Pantalla de estadísticas con el reto anual" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ SPOTLIGHT · RESUMEN (lo fresco) ══════════════════ -->
+  <section class="spotlight" id="resumen">
+    <div class="spotlight__glow" aria-hidden="true"></div>
+    <div class="spotlight__text reveal">
+      <span class="kicker kicker--gold" data-i18n="spot.kicker">Nuevo</span>
+      <h2 data-i18n-html="spot.h">Tu año lector,<br>hecho para compartir</h2>
+      <p data-i18n="spot.p">Cada mes y cada año, Lectu crea una tarjeta preciosa con tu libro favorito, tus portadas y tus cifras. Un “wrapped” de lectura listo para tus historias — sin exportar nada, sin diseñar nada.</p>
+      <a href="#descargar" class="btn btn--pill" data-i18n="spot.btn">Quiero el mío</a>
+    </div>
+    <div class="spotlight__media reveal">
+      <div class="phone phone--tall"><img src="assets/wrapped.png" data-i18n-alt="alt.wrapped" alt="Tarjeta 'Mi marzo lector' con portadas y libro favorito" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FEATURE 5 · QUIZ (lo fresco) ══════════════════ -->
+  <section class="feature" id="quiz">
+    <div class="feature__text reveal">
+      <span class="kicker" data-i18n="f5.kicker">Juega con lo que lees</span>
+      <h2 data-i18n="f5.h">¿Cuánto conoces tu propia colección?</h2>
+      <p data-i18n="f5.p">Un pequeño juego construido con tus libros: adivina la portada difuminada, la sinopsis, el autor o cuál era más largo. Cero presión, pura chispa — y solo con lo que hay en tu estantería.</p>
+      <ul class="ticks">
+        <li data-i18n="f5.t1">Preguntas generadas desde tu biblioteca</li>
+        <li data-i18n="f5.t2">Portadas, sinopsis, citas y duelos de páginas</li>
+        <li data-i18n="f5.t3">100% offline, 100% tuyo</li>
+      </ul>
+    </div>
+    <div class="feature__media reveal">
+      <div class="phone"><img src="assets/quiz.png" data-i18n-alt="alt.quiz" alt="Quiz ¿Qué libro es? con una portada difuminada" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FEATURE 6 · IMPORTAR ══════════════════ -->
+  <section class="feature feature--rev" id="importar">
+    <div class="feature__text reveal">
+      <span class="kicker" data-i18n="f6.kicker">Cambiar de app no duele</span>
+      <h2 data-i18n="f6.h">Trae tu biblioteca sin perder nada</h2>
+      <p data-i18n="f6.p">Importa desde Goodreads o StoryGraph con un CSV y Lectu completa las portadas por ti. Exporta cuando quieras o guarda una copia de seguridad completa: tus libros, citas, sesiones y retos, en un solo archivo.</p>
+      <ul class="ticks">
+        <li data-i18n="f6.t1">Importación desde Goodreads y StoryGraph</li>
+        <li data-i18n="f6.t2">Exportación a CSV — siempre gratis</li>
+        <li data-i18n="f6.t3">Copia de seguridad completa y restaurable</li>
+      </ul>
+    </div>
+    <div class="feature__media reveal">
+      <div class="phone"><img src="assets/importexport.png" data-i18n-alt="alt.importexport" alt="Pantalla de importar y exportar" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ GALERÍA ══════════════════ -->
+  <section class="gallery">
+    <div class="section-head reveal">
+      <span class="kicker" data-i18n="gallery.kicker">Un vistazo</span>
+      <h2 data-i18n="gallery.h">Bonita en cada pantalla</h2>
+    </div>
+    <div class="gallery__scroll" role="list">
+      <div class="gallery__item" role="listitem"><img src="assets/home.png" alt="Inicio" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/library.png" alt="Biblioteca" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/coverflow.png" alt="Colección" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/book.png" alt="Ficha de libro" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/search.png" alt="Buscar" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/results.png" alt="Resultados" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/stats.png" alt="Estadísticas" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/wrapped.png" alt="Resumen" loading="lazy" /></div>
+      <div class="gallery__item" role="listitem"><img src="assets/quiz.png" alt="Quiz" loading="lazy" /></div>
+    </div>
+    <p class="gallery__hint" data-i18n="gallery.hint">Desliza →</p>
+  </section>
+
+  <!-- ══════════════════ PRIVACIDAD ══════════════════ -->
+  <section class="privacy" id="privacidad">
+    <div class="privacy__card reveal">
+      <div class="privacy__icon">🔒</div>
+      <h2 data-i18n="privacy.h">Tu biblioteca es asunto tuyo</h2>
+      <p data-i18n-html="privacy.p">Lectu es <strong>local-first</strong>: tus datos viven en tu iPhone y se sincronizan cifrados por tu iCloud privado. Sin cuentas obligatorias, sin anuncios, sin vender tu actividad. Y funciona sin conexión — en el metro, en un avión o en la montaña.</p>
+      <div class="privacy__tags">
+        <span data-i18n="privacy.tag1">Sin rastreadores</span>
+        <span data-i18n="privacy.tag2">Sin cuenta obligatoria</span>
+        <span data-i18n="privacy.tag3">Sincroniza con iCloud</span>
+        <span data-i18n="privacy.tag4">Offline</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ PRECIO ══════════════════ -->
+  <section class="pricing" id="precio">
+    <div class="section-head reveal">
+      <span class="kicker" data-i18n="pricing.kicker">Precio honesto</span>
+      <h2 data-i18n="pricing.h">Empieza gratis. Hazte Pro si te enamoras.</h2>
+    </div>
+    <div class="plans">
+      <article class="plan reveal">
+        <h3 data-i18n="plan.free.h">Gratis</h3>
+        <p class="plan__price" data-i18n="plan.free.price">0 €</p>
+        <p class="plan__tag" data-i18n="plan.free.tag">Todo lo esencial para leer mejor.</p>
+        <ul class="ticks ticks--plan">
+          <li data-i18n="plan.free.t1">Biblioteca, estados y progreso ilimitados</li>
+          <li data-i18n="plan.free.t2">Búsqueda, escáner y alta manual</li>
+          <li data-i18n="plan.free.t3">Reto anual y estadísticas</li>
+          <li data-i18n="plan.free.t4">Importación y exportación</li>
+          <li data-i18n="plan.free.t5">Quiz y recomendaciones</li>
+        </ul>
+        <a href="#descargar" class="btn btn--ghost btn--block" data-i18n="plan.free.btn">Descargar gratis</a>
+      </article>
+      <article class="plan plan--pro reveal">
+        <span class="plan__badge" data-i18n="plan.pro.badge">Pro · pago único</span>
+        <h3 data-i18n="plan.pro.h">Lectu Pro</h3>
+        <p class="plan__price" data-i18n-html="plan.pro.price">14,99 €<span>una vez, para siempre</span></p>
+        <p class="plan__tag" data-i18n="plan.pro.tag">Sin suscripciones. Sin cuotas. Pagas una vez y es tuyo.</p>
+        <ul class="ticks ticks--plan">
+          <li data-i18n="plan.pro.t1">Widgets y Live Activity</li>
+          <li data-i18n="plan.pro.t2">Sesiones cronometradas e historial</li>
+          <li data-i18n="plan.pro.t3">Estanterías y anotaciones sin límite</li>
+          <li data-i18n="plan.pro.t4">Resúmenes mensuales y anuales</li>
+          <li data-i18n="plan.pro.t5">Todas las futuras mejoras, incluidas</li>
+        </ul>
+        <a href="#descargar" class="btn btn--app btn--block">
+          <span><small data-i18n="plan.pro.btnSmall">Cómpralo una vez en el</small><strong>App Store</strong></span>
+        </a>
+      </article>
+    </div>
+    <p class="pricing__note" data-i18n="pricing.note">Un solo pago, sin suscripciones ni renovaciones. El precio se muestra en tu moneda en la App Store.</p>
+  </section>
+
+  <!-- ══════════════════ FAQ ══════════════════ -->
+  <section class="faq">
+    <div class="section-head reveal">
+      <span class="kicker" data-i18n="faq.kicker">Dudas rápidas</span>
+      <h2 data-i18n="faq.h">Preguntas frecuentes</h2>
+    </div>
+    <div class="faq__list reveal">
+      <details>
+        <summary data-i18n="faq.q1">¿En qué dispositivos funciona?</summary>
+        <p data-i18n="faq.a1">Lectu es una app nativa para iPhone y iPad. Se sincroniza automáticamente entre tus dispositivos a través de tu iCloud.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q2">¿Necesito crear una cuenta?</summary>
+        <p data-i18n="faq.a2">No. Empiezas a usarla al instante. La sincronización usa tu iCloud, sin registros ni contraseñas nuevas.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q3">Vengo de Goodreads o StoryGraph, ¿pierdo mis libros?</summary>
+        <p data-i18n="faq.a3">No. Exporta tu CSV desde esas apps e impórtalo en Lectu; recuperamos las portadas automáticamente. Y siempre puedes volver a exportar los tuyos.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q4">¿Funciona sin conexión?</summary>
+        <p data-i18n="faq.a4">Sí. Toda tu biblioteca, progreso, sesiones, citas y estadísticas funcionan sin red. Solo la búsqueda de libros nuevos necesita internet.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q5">¿Qué incluye la versión gratuita?</summary>
+        <p data-i18n="faq.a5">Muchísimo: biblioteca ilimitada, seguimiento de progreso, búsqueda, escáner, reto anual, estadísticas, importación y exportación. Pro añade widgets, sesiones cronometradas, resúmenes para compartir y más.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q6">¿Lectu Pro es una suscripción?</summary>
+        <p data-i18n-html="faq.a6">No. Pro es un <strong>pago único de 14,99 €</strong> (o el equivalente en tu moneda): lo compras una sola vez y es tuyo para siempre, con todas las mejoras futuras incluidas. Sin suscripciones, sin cuotas anuales, sin renovaciones.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ══════════════════ CTA FINAL ══════════════════ -->
+  <section class="cta" id="descargar">
+    <div class="cta__glow" aria-hidden="true"></div>
+    <img src="assets/icon.png" alt="Icono de Lectu" class="cta__icon reveal" />
+    <h2 class="reveal" data-i18n-html="cta.h">Tu próxima gran lectura<br>empieza aquí.</h2>
+    <p class="reveal" data-i18n="cta.p">Descarga Lectu y dale a tu vida lectora la app que se merece.</p>
+    <a href="#" class="btn btn--app btn--lg reveal">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="btn__apple"><path fill="currentColor" d="M16.36 12.9c.02 2.36 2.07 3.14 2.1 3.16-.02.06-.33 1.12-1.08 2.22-.65.95-1.32 1.9-2.38 1.92-1.04.02-1.37-.61-2.56-.61-1.19 0-1.56.59-2.54.63-1.02.04-1.8-1.03-2.46-1.98-1.34-1.94-2.37-5.48-.99-7.87.68-1.19 1.9-1.94 3.22-1.96 1-.02 1.95.68 2.56.68.61 0 1.76-.84 2.97-.72.5.02 1.93.2 2.84 1.53-.07.05-1.7 1-1.68 2.97M14.4 6.9c.54-.66.9-1.57.8-2.48-.78.03-1.72.52-2.28 1.18-.5.58-.94 1.51-.82 2.4.87.07 1.76-.44 2.3-1.1"/></svg>
+      <span><small data-i18n="cta.appSmall">Descárgala en el</small><strong>App Store</strong></span>
+    </a>
+    <p class="cta__mini" data-i18n="cta.mini">Gratis para empezar. Pro por un pago único. Sin anuncios, nunca.</p>
+  </section>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="footer">
+    <div class="footer__brand">
+      <img src="assets/logo-L.png" alt="" class="footer__glyph" />
+      <span>Lectu</span>
+    </div>
+    <nav class="footer__links" aria-label="Enlaces del pie">
+      <a href="#biblioteca" data-i18n="footer.features">Funciones</a>
+      <a href="#precio" data-i18n="footer.pricing">Precio</a>
+      <a href="#privacidad" data-i18n="footer.privacy">Privacidad</a>
+      <a href="#" data-i18n="footer.support">Soporte</a>
+    </nav>
+    <p class="footer__legal"><span data-i18n="footer.legal">Hecha con cariño para quien ama leer.</span> · © <span id="year"></span> Lectu</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
