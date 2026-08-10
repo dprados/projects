@@ -44,6 +44,16 @@ function applyLang(lang) {
     const v = dict[el.getAttribute('data-i18n-alt')];
     if (v != null) el.setAttribute('alt', v);
   });
+  // src attributes (e.g. the localized App Store badge)
+  document.querySelectorAll('[data-i18n-src]').forEach((el) => {
+    const v = dict[el.getAttribute('data-i18n-src')];
+    if (v != null) el.setAttribute('src', v);
+  });
+  // aria-label attributes
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+    const v = dict[el.getAttribute('data-i18n-aria')];
+    if (v != null) el.setAttribute('aria-label', v);
+  });
   // meta description
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc && dict['meta.description']) metaDesc.setAttribute('content', dict['meta.description']);
@@ -96,6 +106,28 @@ nav.querySelectorAll('.nav__links a').forEach((a) =>
     burger.setAttribute('aria-expanded', 'false');
   })
 );
+
+// Cover Flow demo video: only autoplay when motion is allowed. Under
+// prefers-reduced-motion, keep the static poster (no autoplay, no fetch).
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.coverflow-demo__video').forEach((v) => {
+  if (reduceMotion) {
+    v.removeAttribute('autoplay');
+    v.pause();
+  } else {
+    // Load + play once it scrolls near view (preload="none" keeps it cheap until then).
+    v.preload = 'auto';
+    const tryPlay = () => v.play().catch(() => {});
+    if ('IntersectionObserver' in window) {
+      const vo = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { tryPlay(); vo.unobserve(e.target); } });
+      }, { threshold: 0.25 });
+      vo.observe(v);
+    } else {
+      tryPlay();
+    }
+  }
+});
 
 // Reveal-on-scroll (respects reduced motion — CSS disables the transition there).
 const reveals = document.querySelectorAll('.reveal');
